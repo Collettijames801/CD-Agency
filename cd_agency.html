@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CD Agency | AI Integration for Local Businesses</title>
+<meta name="description" content="CD Agency is an AI integration and digital marketing company for local businesses: AI receptionists, websites, automated follow-up, Meta ads and Google review management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000;
+    --card: #111214;
+    --card-2: #17181b;
+    --line: #26282d;
+    --text: #f2f3f5;
+    --muted: #9a9ea8;
+    --accent: #c6ff3d;
+    --accent-dim: rgba(198, 255, 61, 0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3, .logo { font-family: "Space Grotesk", sans-serif; letter-spacing: -0.02em; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+  .nav-links { display: flex; gap: 28px; font-size: 0.95rem; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+  .btn {
+    display: inline-block; padding: 12px 22px; border-radius: 10px;
+    font-weight: 600; font-size: 0.95rem; transition: transform .15s, box-shadow .15s;
+  }
+  .btn-primary { background: var(--accent); color: #000; box-shadow: 0 0 24px rgba(198,255,61,.25); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 32px rgba(198,255,61,.4); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--muted); }
+
+  /* Hero */
+  .hero { position: relative; padding: 110px 0 90px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; top: -200px; right: -150px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(198,255,61,.18), transparent 65%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    display: inline-block; font-size: 0.8rem; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--accent-dim); padding: 6px 12px; border-radius: 999px; margin-bottom: 22px;
+  }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.05; max-width: 820px; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 1.15rem; max-width: 620px; margin: 22px 0 34px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* Sections */
+  section { padding: 90px 0; border-top: 1px solid var(--line); }
+  .section-head { margin-bottom: 44px; }
+  .section-head h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+  .section-head p { color: var(--muted); margin-top: 10px; max-width: 600px; }
+
+  /* Services */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 28px; display: flex; flex-direction: column; gap: 14px;
+    transition: border-color .2s;
+  }
+  .card:hover { border-color: rgba(198,255,61,.4); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; }
+  .num { font-family: "Space Grotesk", sans-serif; color: var(--accent); font-weight: 700; }
+  .icon {
+    width: 46px; height: 46px; border-radius: 12px; background: var(--card-2);
+    border: 1px solid var(--line); display: grid; place-items: center;
+  }
+  .icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .card h3 { font-size: 1.3rem; }
+  .card p { color: var(--muted); font-size: 0.97rem; }
+  .card ul { list-style: none; color: var(--muted); font-size: 0.92rem; display: grid; gap: 6px; }
+  .card li::before { content: "→ "; color: var(--accent); }
+  .price {
+    margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; font-size: 0.92rem; color: var(--muted);
+  }
+  .price strong { color: var(--text); font-weight: 600; }
+
+  /* How it works */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .step { padding: 24px; border-left: 2px solid var(--accent); background: var(--card); border-radius: 0 12px 12px 0; }
+  .step h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: 0.95rem; }
+
+  /* CTA */
+  .cta-box {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 56px 40px; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-box::before {
+    content: ""; position: absolute; inset: auto 0 -120px 0; height: 240px;
+    background: radial-gradient(ellipse at center, rgba(198,255,61,.15), transparent 70%);
+  }
+  .cta-box h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); position: relative; }
+  .cta-box p { color: var(--muted); margin: 12px auto 28px; max-width: 520px; position: relative; }
+  .cta-box .hero-ctas { justify-content: center; position: relative; }
+
+  /* Policies */
+  .policies { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .policy { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+  .policy h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .policy p { color: var(--muted); font-size: 0.92rem; }
+
+  footer { border-top: 1px solid var(--line); padding: 36px 0; color: var(--muted); font-size: 0.9rem; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    .hero { padding: 80px 0 60px; }
+    section { padding: 64px 0; }
+    .cta-box { padding: 40px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo"><span class="dot"></span>CD Agency</a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#policies">Policies</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="tel:+17322994366" class="btn btn-primary">Call us</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">AI integration for local businesses</span>
+    <h1>Never miss a call, a lead or a <span>5-star review</span> again.</h1>
+    <p>CD Agency sets up AI and automation that answers your phones, follows up with every lead, runs your ads and grows your Google reviews, so you can focus on the work.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Book a free strategy call</a>
+      <a href="#services" class="btn btn-ghost">See services</a>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What we do</h2>
+      <p>Pick one service or bundle them. Every plan is a one-time setup plus a simple monthly fee.</p>
+    </div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <span class="num">01</span>
+        </div>
+        <h3>AI Receptionist</h3>
+        <p>A 24/7 AI voice assistant that answers calls, books appointments and captures every lead.</p>
+        <ul><li>Answers after hours and overflow calls</li><li>Books straight into your calendar</li><li>Sends you a summary of every call</li></ul>
+        <div class="price"><span>Setup <strong>$400</strong></span><span><strong>$300</strong>/mo</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <span class="num">02</span>
+        </div>
+        <h3>Web Design</h3>
+        <p>A fast, mobile-first website built to turn visitors into booked jobs.</p>
+        <ul><li>Click-to-call and booking buttons</li><li>Local SEO basics</li><li>Hosting and monthly updates</li></ul>
+        <div class="price"><span>Setup <strong>$1,500</strong></span><span><strong>$75</strong>/mo</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <span class="num">03</span>
+        </div>
+        <h3>Follow-Up Text &amp; Email</h3>
+        <p>Automated follow-up so no lead goes cold.</p>
+        <ul><li>Missed-call text-back</li><li>New lead and quote follow-up</li><li>Past-customer reactivation</li></ul>
+        <div class="price"><span>Setup <strong>$400</strong></span><span><strong>$200</strong>/mo</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg></div>
+          <span class="num">04</span>
+        </div>
+        <h3>Meta Ads</h3>
+        <p>Facebook and Instagram ads that bring in real local leads.</p>
+        <ul><li>Campaign setup and Meta Pixel</li><li>Weekly testing and optimization</li><li>Ad spend paid directly to Meta</li></ul>
+        <div class="price"><span>Setup <strong>$400</strong></span><span><strong>$750</strong>/mo</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+          <span class="num">05</span>
+        </div>
+        <h3>Google Review Management</h3>
+        <p>More reviews, faster responses and a stronger Google Business Profile.</p>
+        <ul><li>Automatic review requests after each job</li><li>Professional replies to every review</li><li>Google Business Profile upkeep</li></ul>
+        <div class="price"><span>Setup <strong>$250</strong></span><span><strong>$175</strong>/mo</span></div>
+      </div>
+
+      <div class="card" style="justify-content:center; text-align:center; border-style:dashed;">
+        <h3>Bundle &amp; save</h3>
+        <p>Combine two or more services and get a discounted monthly rate. Ask us about packages.</p>
+        <a href="#contact" class="btn btn-primary" style="align-self:center;">Get a custom quote</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How it works</h2>
+      <p>From first call to fully running in about two weeks.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>1. Strategy call</h3><p>We learn your business and pick the services that will make the biggest difference.</p></div>
+      <div class="step"><h3>2. Setup</h3><p>We build and connect everything: phone, website, automations, ads and reviews.</p></div>
+      <div class="step"><h3>3. Launch</h3><p>Your systems go live and start working for you around the clock.</p></div>
+      <div class="step"><h3>4. Monthly management</h3><p>We monitor, improve and report results every month.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-box">
+      <h2>Ready to stop losing leads?</h2>
+      <p>Book a free 15-minute strategy call. We'll show you exactly where AI and automation can help your business.</p>
+      <div class="hero-ctas">
+        <a href="tel:+17322994366" class="btn btn-primary">Call (732) 299-4366</a>
+        <a href="sms:+17322994366" class="btn btn-ghost">Send a text</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="policies">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Billing &amp; policies</h2>
+    </div>
+    <div class="policies">
+      <div class="policy">
+        <h3>Billing</h3>
+        <p>Setup fees are billed once at signup. Monthly services are billed automatically each month by card through our secure payment processor, Stripe. All prices are in USD.</p>
+      </div>
+      <div class="policy">
+        <h3>Cancellation</h3>
+        <p>Monthly services can be canceled at any time with 30 days' notice by phone or text. No long-term contracts. Service continues through the end of the paid period.</p>
+      </div>
+      <div class="policy">
+        <h3>Refunds</h3>
+        <p>Setup fees are refundable before work begins. Once setup work has started, setup fees are non-refundable. Monthly fees are not prorated or refunded for partial months.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><span class="logo" style="display:inline-flex; font-size:1rem;"><span class="dot"></span>CD Agency</span> &nbsp;·&nbsp; Marlboro, NJ</span>
+    <span>(732) 299-4366 &nbsp;·&nbsp; © 2026 CD Agency. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
