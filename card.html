@@ -9,13 +9,13 @@
 <meta name="description" content="CD Automate digital business card. AI systems for businesses.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #efebe3; --paper: #faf8f4; --text: #1a1c20; --muted: #5d6370; --line: #d9d3c7; --accent: #1f4d3a; --accent-dark: #163a2b; }
+  :root { --bg: #efebe3; --paper: #faf8f4; --text: #1a1c20; --muted: #5d6370; --line: #d9d3c7; --accent: #1f4d3a; --accent-dark: #163a2b; --gold: #b8893a; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--bg); color: var(--text); font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 40px 18px 56px; gap: 22px; }
   a { color: inherit; text-decoration: none; }
-  .serif { font-family: "Source Serif 4", Georgia, serif; }
+  .serif { font-family: "Fraunces", Georgia, serif; }
   .card { width: 100%; max-width: 700px; aspect-ratio: 1050 / 600; container-type: inline-size; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 2px rgba(20,20,20,.06), 0 10px 30px rgba(20,20,20,.08); }
   .front { background: var(--paper); padding: 6.9cqw 7.6cqw; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
   .eyebrow { font-size: 1.45cqw; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
@@ -42,7 +42,12 @@
   .btn-ghost { border: 1px solid #c9c3b8; background: var(--paper); }
   .btn-ghost:hover { border-color: var(--muted); }
   .note { font-size: 0.85rem; color: var(--muted); text-align: center; }
-</style>
+    /* Gold accent */
+    .front .eyebrow { display: inline-flex; align-items: center; gap: 1.6cqw; }
+    .front .eyebrow::before { content: ""; width: 4cqw; height: 2px; background: var(--gold); }
+    .front .rule { width: 9cqw; height: 2px; background: var(--gold); }
+    .back { border-top: 3px solid var(--gold); }
+  </style>
 </head>
 <body>
 
