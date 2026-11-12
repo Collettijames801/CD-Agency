@@ -21,7 +21,7 @@
 <meta name="description" content="CD Automate is an AI integration and digital marketing company for businesses: AI receptionists, websites, automated follow-up, Meta ads, Google review management and automated order processing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #faf8f4;
@@ -33,6 +33,7 @@
     --accent: #1f4d3a;
     --accent-dark: #163a2b;
     --accent-dim: rgba(31, 77, 58, 0.08);
+      --gold: #b8893a; --gold-dark: #9a6f2a;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -45,7 +46,7 @@
   }
   a { color: inherit; text-decoration: none; }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-  h1, h2, h3, .logo { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; letter-spacing: -0.01em; }
+  h1, h2, h3, .logo { font-family: "Fraunces", Georgia, serif; font-weight: 600; letter-spacing: -0.01em; }
 
   /* Nav */
   nav {
@@ -56,8 +57,8 @@
   }
   nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
   .logo { font-size: 1.35rem; display: flex; align-items: center; }
-  .nav-links { display: flex; gap: 28px; font-size: 0.95rem; color: var(--muted); }
-  .nav-links a:hover { color: var(--text); }
+  .nav-links { display: flex; gap: 28px; font-size: 0.95rem; font-weight: 500; color: var(--text); }
+  .nav-links a:hover { color: var(--accent); }
   .menu-btn { display: none; background: none; border: 1px solid #c9c3b8; border-radius: 6px; width: 44px; height: 44px; cursor: pointer; align-items: center; justify-content: center; color: var(--text); }
   .menu-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; fill: none; }
   .menu-btn .icon-close { display: none; }
@@ -171,7 +172,14 @@
     section { padding: 64px 0; }
     .cta-box { padding: 40px 22px; }
   }
-</style>
+    /* Gold accent */
+    .hero .eyebrow { display: inline-flex; align-items: center; gap: 10px; }
+    .hero .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--gold); }
+    .section-head h2::after { content: ""; display: block; width: 40px; height: 3px; background: var(--gold); margin-top: 14px; border-radius: 2px; }
+    .icon { background: rgba(184, 137, 58, 0.12); }
+    .icon svg { stroke: var(--gold-dark); }
+    .cta-box { border-top: 3px solid var(--gold); }
+  </style>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
