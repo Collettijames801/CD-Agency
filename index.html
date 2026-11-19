@@ -179,6 +179,47 @@
     .icon { background: rgba(184, 137, 58, 0.12); }
     .icon svg { stroke: var(--gold-dark); }
     .cta-box { border-top: 3px solid var(--gold); }
+
+    /* narrow-viewport grid fix: never let a track exceed the container */
+    .grid { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+    .steps { grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
+    .policies { grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+    :root { --gold-dark: #986d28; }
+    /* Multi-page nav (added) */
+    nav { z-index: 20; }
+    .logo { white-space: nowrap; }
+    .nav-links { align-items: center; }
+    .nav-links a[aria-current="page"] { color: var(--accent); }
+    .has-sub { position: relative; }
+    .sub-toggle { font: inherit; font-weight: 500; color: inherit; background: none; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 0; }
+    .sub-toggle:hover { color: var(--accent); }
+    .sub-toggle svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform .18s; }
+    .sub-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+    .sub { display: none; position: absolute; top: calc(100% + 14px); left: -18px; min-width: 268px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px; box-shadow: 0 12px 30px rgba(20,20,20,.10); flex-direction: column; }
+    .sub.open { display: flex; }
+  @media (hover: hover) and (min-width: 861px) { .has-sub:hover .sub { display: flex; } }
+    .sub a { padding: 11px 14px; border-radius: 6px; font-weight: 500; color: var(--text); white-space: nowrap; }
+    .sub a:hover { background: var(--accent-dim); color: var(--accent); }
+    .card h3 a { transition: color .15s; }
+    .card h3 a:hover { color: var(--accent); }
+    @media (max-width: 860px) {
+      .menu-btn { display: inline-flex; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; align-items: stretch; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 8px 18px rgba(20,20,20,.06); max-height: calc(100vh - 68px); overflow-y: auto; }
+      .nav-links.open { display: flex; }
+      .nav-links > a { padding: 16px 24px; border-top: 1px solid var(--line); font-size: 1rem; color: var(--text); }
+      .has-sub { position: static; }
+      .sub-toggle { width: 100%; justify-content: space-between; padding: 16px 24px; border-top: 1px solid var(--line); font-size: 1rem; }
+      .sub.open { display: flex; }
+      .sub { position: static; border: 0; border-radius: 0; box-shadow: none; padding: 0 0 8px; background: var(--card-2); min-width: 0; }
+      .sub a { padding: 13px 24px 13px 38px; border-radius: 0; font-size: 0.97rem; }
+      .logo { font-size: 1.12rem; gap: 7px; }
+      .logo svg { width: 28px; height: 25px; }
+    .logo { font-size: 1.12rem; gap: 7px; }
+    .logo svg { width: 28px; height: 25px; }
+      nav .btn-primary { padding: 10px 16px; }
+    body.nav-open { overflow: hidden; }
+      body.nav-open { overflow: hidden; }
+    }
   </style>
 <script type="application/ld+json">
 {
@@ -282,9 +323,21 @@
 
 <nav>
   <div class="wrap">
-    <a href="#" class="logo" style="gap:10px;"><svg width="34" height="30" viewBox="24 28 166 144" aria-hidden="true"><path d="M100 40 H115 A60 60 0 0 1 115 160 H100 Z" fill="none" stroke="#1f4d3a" stroke-width="17" stroke-linejoin="round"/><path d="M87.7 61.2 A40 40 0 0 1 108.6 74.3" fill="none" stroke="#faf8f4" stroke-width="29"/><path d="M108.6 74.3 A40 40 0 1 0 108.6 125.7" fill="none" stroke="#1a1c20" stroke-width="17" stroke-linecap="round"/><rect x="86" y="116" width="32" height="34" fill="#faf8f4"/><path d="M100 112 V152" fill="none" stroke="#1f4d3a" stroke-width="17"/></svg>CD Automate</a>
+    <a href="index.html" class="logo"><svg width="34" height="30" viewBox="24 28 166 144" aria-hidden="true"><path d="M100 40 H115 A60 60 0 0 1 115 160 H100 Z" fill="none" stroke="#1f4d3a" stroke-width="17" stroke-linejoin="round"/><path d="M87.7 61.2 A40 40 0 0 1 108.6 74.3" fill="none" stroke="#faf8f4" stroke-width="29"/><path d="M108.6 74.3 A40 40 0 1 0 108.6 125.7" fill="none" stroke="#1a1c20" stroke-width="17" stroke-linecap="round"/><rect x="86" y="116" width="32" height="34" fill="#faf8f4"/><path d="M100 112 V152" fill="none" stroke="#1f4d3a" stroke-width="17"/></svg>CD Automate</a>
     <div class="nav-links" id="nav-links">
-      <a href="#services">Services</a>
+      <div class="has-sub">
+        <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="svc-menu">Services
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="sub" id="svc-menu">
+        <a href="ai-receptionist.html">AI Receptionist</a>
+        <a href="web-design.html">Web Design</a>
+        <a href="follow-up.html">Follow-Up Text &amp; Email</a>
+        <a href="meta-ads.html">Meta Ads</a>
+        <a href="review-management.html">Google Review Management</a>
+        <a href="order-desk.html">Automated Order Desk</a>
+        </div>
+      </div>
       <a href="#how">Our process</a>
       <a href="#faq">FAQ</a>
       <a href="#policies">Policies</a>
@@ -325,60 +378,60 @@
         <div class="card-top">
           <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
         </div>
-        <h3>AI Receptionist</h3>
+        <h3><a href="ai-receptionist.html">AI Receptionist</a></h3>
         <p>A professional AI voice agent that answers every call, schedules appointments and documents each conversation, day or night.</p>
         <ul><li>Answers after hours and overflow calls</li><li>Books straight into your calendar</li><li>Sends you a summary of every call</li></ul>
-        <div class="price"><span>Pricing</span><a href="#contact" style="color:var(--accent); font-weight:600;">Request a quote</a></div>
+        <div class="price"><span>Pricing</span><a href="ai-receptionist.html" style="color:var(--accent); font-weight:600;">Learn more &rarr;</a></div>
       </div>
 
       <div class="card">
         <div class="card-top">
           <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
         </div>
-        <h3>Web Design</h3>
+        <h3><a href="web-design.html">Web Design</a></h3>
         <p>A fast, mobile-ready website designed to convert visitors into booked jobs.</p>
         <ul><li>Click-to-call and booking buttons</li><li>Local SEO basics</li><li>Hosting and monthly updates</li></ul>
-        <div class="price"><span>Pricing</span><a href="#contact" style="color:var(--accent); font-weight:600;">Request a quote</a></div>
+        <div class="price"><span>Pricing</span><a href="web-design.html" style="color:var(--accent); font-weight:600;">Learn more &rarr;</a></div>
       </div>
 
       <div class="card">
         <div class="card-top">
           <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         </div>
-        <h3>Follow-Up Text &amp; Email</h3>
+        <h3><a href="follow-up.html">Follow-Up Text &amp; Email</a></h3>
         <p>Automated text and email sequences that keep every lead and past customer engaged.</p>
         <ul><li>Missed-call text-back</li><li>New lead and quote follow-up</li><li>Past-customer reactivation</li></ul>
-        <div class="price"><span>Monthly</span><span><strong>$200</strong>/mo</span></div>
+        <div class="price"><span><strong>$200</strong>/mo</span><a href="follow-up.html" style="color:var(--accent); font-weight:600;">Learn more &rarr;</a></div>
       </div>
 
       <div class="card">
         <div class="card-top">
           <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg></div>
         </div>
-        <h3>Meta Ads</h3>
+        <h3><a href="meta-ads.html">Meta Ads</a></h3>
         <p>Managed Facebook and Instagram campaigns targeted to customers in your service area.</p>
         <ul><li>Campaign setup and Meta Pixel</li><li>Weekly testing and optimization</li><li>Ad spend paid directly to Meta</li></ul>
-        <div class="price"><span>Pricing</span><a href="#contact" style="color:var(--accent); font-weight:600;">Request a quote</a></div>
+        <div class="price"><span>Pricing</span><a href="meta-ads.html" style="color:var(--accent); font-weight:600;">Learn more &rarr;</a></div>
       </div>
 
       <div class="card">
         <div class="card-top">
           <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
         </div>
-        <h3>Google Review Management</h3>
+        <h3><a href="review-management.html">Google Review Management</a></h3>
         <p>A steady flow of new reviews, timely responses and a well-maintained Google Business Profile.</p>
         <ul><li>Automatic review requests after each job</li><li>Professional replies to every review</li><li>Google Business Profile upkeep</li></ul>
-        <div class="price"><span>Monthly</span><span><strong>$200</strong>/mo</span></div>
+        <div class="price"><span><strong>$200</strong>/mo</span><a href="review-management.html" style="color:var(--accent); font-weight:600;">Learn more &rarr;</a></div>
       </div>
 
       <div class="card">
         <div class="card-top">
           <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/></svg></div>
         </div>
-        <h3>Automated Order Desk</h3>
+        <h3><a href="order-desk.html">Automated Order Desk</a></h3>
         <p>Customer order emails read, checked and entered into apps like QuickBooks, with your team approving every order.</p>
         <ul><li>Matches each item to your product list</li><li>Flags missing items, prices and stock issues</li><li>Enters approved orders into your accounting app</li></ul>
-        <div class="price"><span>Pricing</span><a href="#contact" style="color:var(--accent); font-weight:600;">Request a quote</a></div>
+        <div class="price"><span>Pricing</span><a href="order-desk.html" style="color:var(--accent); font-weight:600;">Learn more &rarr;</a></div>
       </div>
 
       <div class="card card-bundle">
@@ -510,15 +563,29 @@
   (function () {
     var btn = document.querySelector('.menu-btn');
     var menu = document.getElementById('nav-links');
+    var subBtn = document.querySelector('.sub-toggle');
+    var sub = document.getElementById('svc-menu');
     function setOpen(open) {
       menu.classList.toggle('open', open);
+      document.body.classList.toggle('nav-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (!open) setSub(false);
+    }
+    function setSub(open) {
+      sub.classList.toggle('open', open);
+      subBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
     btn.addEventListener('click', function () { setOpen(!menu.classList.contains('open')); });
+    subBtn.addEventListener('click', function (e) { e.stopPropagation(); setSub(!sub.classList.contains('open')); });
     menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') setOpen(false); });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.has-sub')) setSub(false);
+    });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && menu.classList.contains('open')) { setOpen(false); btn.focus(); }
+      if (e.key !== 'Escape') return;
+      if (sub.classList.contains('open')) { setSub(false); subBtn.focus(); }
+      else if (menu.classList.contains('open')) { setOpen(false); btn.focus(); }
     });
   })();
 </script>
